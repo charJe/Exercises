@@ -1,0 +1,7 @@
+(defun puthash (key value *hash*)
+    (let ((*new-hash* (make-hash-table)))
+      (maphash (lambda (key val)
+                 (setf (gethash key *new-hash*) val))
+               *hash*)
+      (setf (gethash key *new-hash*) value)
+      *new-hash*))
