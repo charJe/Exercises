@@ -1,28 +1,13 @@
 (defun possible-sums (coins quants)
-  (let ((track (make-hash-table))
-  (- (list-length )))
-
-
-(defun powerset (set &optional powers)
-  (if (null set)
-      powers
-    (powerset (car set)
-              (cons powers
-                    (map #'(lambda (subset)
-                            (cons (car set)
-                                  (subset))) power)))))
-
-(defun num-coins (coins quants &optional combos)
-  (cond
-   ((null coins)
-    combos)
-   ((/= 1 (car(quants)))
-    (num-coins coins
-              (cons (- (car quants) 1)
-                    (cdr quants))
-              (cons (car coins) combos)))
-   (t
-    (num-coins (cdr coins)
-               (cdr quants)
-               (cons (car coins)
-                     combos)))))
+  (let* ((*seen* '())) 
+    (mapcar #'(lambda (pair)
+                (let ((coin (first pair))
+                      (quant (second pair)))
+                  (mapcar  #'(lambda (amount)
+                               (mapcar #'(lambda (part)
+                                           (+ amount part))
+                                       (loop for part from 0 below (1+ (* coin quant)) by coin
+                                             collect part)))
+                           *seen*)))
+            (mapcar #'list coins quants))
+    (1- (length *seen*))))
