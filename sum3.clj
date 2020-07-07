@@ -15,13 +15,9 @@
                             (conj solutions
                                   (sort (list (nums i) (nums left) (nums right))))
                             solutions)
-                          i (if (< sum goal)
-                              (+ left 1)
-                              left)
-                          (if (>= sum goal)
-                            (- right 1)
-                            right)))))]
-      (into (list) solutions))))
+                          i (if (< sum goal) (+ left 1) left)
+                          (if (>= sum goal) (- right 1) right)))))]
+     (into (list) solutions))))
 
 (defn sum3-test [result goal]
   (loop [result result, pass true]
