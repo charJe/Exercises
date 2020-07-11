@@ -1,10 +1,16 @@
-;; A tree is defined like this:
-'(value (value (leaf-node () ())
-              ())
-       (value (leaf-node () ())
-              (value (leaf-node () ())
-                     (value ()
-                            (leaf-node () ())))))
+;; A binary tree is defined like this:
+(define sample
+  '(value (value (leaf-node ()
+                            ())
+                 ())
+          (value (leaf-node ()
+                            ())
+                 (value (leaf-node ()
+                                   ())
+                        (value ()
+                               (leaf-node ()
+                                          ()))))))
+
 (define (tree-height tree)
   (let dfs ((depth -1) (tree tree))
     (cond
