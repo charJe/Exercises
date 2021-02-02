@@ -28,6 +28,7 @@
              (acons command (+ 1 (cdr pair)) frequencies)
              (acons command 1 frequencies))))
      <> :initial-value (list))
+    ;; clean up alist
     (remove-duplicates <> :test #'string= :key #'car :from-end t)
     ;; get top NUMBER frequencies
     (reduce
