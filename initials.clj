@@ -32,6 +32,6 @@
 ;; invalid
 (every? (fn [name]
           (not (valid-name? name)))
-       (list "J R Tolkien"
-             "J. F. K."
-             "Franklin"))
+       (list "J R Tolkien" ;; no periods
+             "J. F. K."    ;; last name is not a word
+             "Franklin"))  ;; must have at least two names
